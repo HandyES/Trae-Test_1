@@ -1,13 +1,22 @@
 export type ShoppingCategory = 'vegetable' | 'egg' | 'meat' | 'milk';
 
+export interface MarketPrice {
+  market: string;
+  price: number;
+  updateTime: string;
+}
+
 export interface ShoppingItem {
   id: string;
   name: string;
   category: ShoppingCategory;
-  price: number;
   unit: string;
-  market: string;
-  updateTime: string;
+  markets: MarketPrice[];
+}
+
+export interface Dish {
+  name: string;
+  price: number;
 }
 
 export interface Restaurant {
@@ -17,6 +26,7 @@ export interface Restaurant {
   address: string;
   rating: number;
   recommendedDishes: string[];
+  dishes: Dish[];
   avgPrice: number;
   distance?: number;
 }

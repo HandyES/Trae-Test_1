@@ -89,16 +89,27 @@ export const ShoppingPage: React.FC = () => {
             <div key={item.id} className="bg-white rounded-2xl p-4 shadow-sm">
               <div className="flex items-center gap-4">
                 {renderIcon(item.category)}
-                <div className="flex-1">
-                  <div className="flex items-center justify-between">
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center justify-between mb-2">
                     <h3 className="text-xl font-bold text-gray-800">{item.name}</h3>
-                    <span className="text-2xl font-bold text-[#E8985A]">
-                      ¥{item.price.toFixed(1)}
-                      <span className="text-sm font-normal text-gray-500">/{item.unit}</span>
-                    </span>
+                    <span className="text-lg text-gray-500">/{item.unit}</span>
                   </div>
-                  <p className="text-base text-gray-500 mt-1">{item.market}</p>
-                  <p className="text-sm text-gray-400 mt-1">更新时间：{item.updateTime}</p>
+                  
+                  <div className="space-y-2">
+                    {item.markets.map((market, index) => (
+                      <div key={index} className="flex items-center justify-between bg-gray-50 rounded-lg px-3 py-2">
+                        <span className="text-base text-gray-700">{market.market}</span>
+                        <span className="text-lg font-bold text-[#E8985A]">¥{market.price.toFixed(1)}</span>
+                      </div>
+                    ))}
+                  </div>
+                  
+                  {item.markets.length === 1 && (
+                    <p className="text-sm text-gray-400 mt-2">仅一个市场有数据</p>
+                  )}
+                  {item.markets.length >= 2 && (
+                    <p className="text-sm text-gray-400 mt-2">共 {item.markets.length} 个市场报价</p>
+                  )}
                 </div>
               </div>
             </div>

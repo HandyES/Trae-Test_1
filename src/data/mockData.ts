@@ -1,36 +1,344 @@
 import { ShoppingItem, Restaurant, Entertainment, Medical } from '../types';
 
 export const shoppingData: ShoppingItem[] = [
-  { id: '1', name: '大白菜', category: 'vegetable', price: 1.2, unit: '斤', market: '北环批发市场', updateTime: '2026-05-29 08:00' },
-  { id: '2', name: '西红柿', category: 'vegetable', price: 3.5, unit: '斤', market: '北环批发市场', updateTime: '2026-05-29 08:00' },
-  { id: '3', name: '黄瓜', category: 'vegetable', price: 2.8, unit: '斤', market: '北环批发市场', updateTime: '2026-05-29 08:00' },
-  { id: '4', name: '土豆', category: 'vegetable', price: 1.8, unit: '斤', market: '北环批发市场', updateTime: '2026-05-29 08:00' },
-  { id: '5', name: '胡萝卜', category: 'vegetable', price: 2.5, unit: '斤', market: '北环批发市场', updateTime: '2026-05-29 08:00' },
-  { id: '6', name: '青椒', category: 'vegetable', price: 4.2, unit: '斤', market: '北环批发市场', updateTime: '2026-05-29 08:00' },
-  { id: '7', name: '鸡蛋', category: 'egg', price: 5.8, unit: '斤', market: '北环批发市场', updateTime: '2026-05-29 08:00' },
-  { id: '8', name: '土鸡蛋', category: 'egg', price: 12.5, unit: '斤', market: '北环批发市场', updateTime: '2026-05-29 08:00' },
-  { id: '9', name: '猪肉', category: 'meat', price: 14.5, unit: '斤', market: '北环批发市场', updateTime: '2026-05-29 08:00' },
-  { id: '10', name: '牛肉', category: 'meat', price: 38.0, unit: '斤', market: '北环批发市场', updateTime: '2026-05-29 08:00' },
-  { id: '11', name: '羊肉', category: 'meat', price: 35.0, unit: '斤', market: '北环批发市场', updateTime: '2026-05-29 08:00' },
-  { id: '12', name: '鸡肉', category: 'meat', price: 11.8, unit: '斤', market: '北环批发市场', updateTime: '2026-05-29 08:00' },
-  { id: '13', name: '纯牛奶', category: 'milk', price: 3.5, unit: '袋', market: '北环批发市场', updateTime: '2026-05-29 08:00' },
-  { id: '14', name: '酸奶', category: 'milk', price: 4.2, unit: '杯', market: '北环批发市场', updateTime: '2026-05-29 08:00' },
-  { id: '15', name: '鲜牛奶', category: 'milk', price: 8.8, unit: '斤', market: '北环批发市场', updateTime: '2026-05-29 08:00' },
+  { 
+    id: '1', 
+    name: '大白菜', 
+    category: 'vegetable', 
+    unit: '斤', 
+    markets: [
+      { market: '北环批发市场', price: 1.2, updateTime: '2026-05-29 08:00' },
+      { market: '东环批发市场', price: 1.3, updateTime: '2026-05-29 08:00' },
+      { market: '宁鲜市场', price: 1.4, updateTime: '2026-05-29 08:00' },
+    ]
+  },
+  { 
+    id: '2', 
+    name: '西红柿', 
+    category: 'vegetable', 
+    unit: '斤', 
+    markets: [
+      { market: '北环批发市场', price: 3.5, updateTime: '2026-05-29 08:00' },
+      { market: '东环批发市场', price: 3.8, updateTime: '2026-05-29 08:00' },
+      { market: '宁鲜市场', price: 3.6, updateTime: '2026-05-29 08:00' },
+    ]
+  },
+  { 
+    id: '3', 
+    name: '黄瓜', 
+    category: 'vegetable', 
+    unit: '斤', 
+    markets: [
+      { market: '北环批发市场', price: 2.8, updateTime: '2026-05-29 08:00' },
+      { market: '东环批发市场', price: 3.0, updateTime: '2026-05-29 08:00' },
+      { market: '宁鲜市场', price: 2.9, updateTime: '2026-05-29 08:00' },
+    ]
+  },
+  { 
+    id: '4', 
+    name: '土豆', 
+    category: 'vegetable', 
+    unit: '斤', 
+    markets: [
+      { market: '北环批发市场', price: 1.8, updateTime: '2026-05-29 08:00' },
+      { market: '东环批发市场', price: 1.9, updateTime: '2026-05-29 08:00' },
+    ]
+  },
+  { 
+    id: '5', 
+    name: '胡萝卜', 
+    category: 'vegetable', 
+    unit: '斤', 
+    markets: [
+      { market: '北环批发市场', price: 2.5, updateTime: '2026-05-29 08:00' },
+    ]
+  },
+  { 
+    id: '6', 
+    name: '青椒', 
+    category: 'vegetable', 
+    unit: '斤', 
+    markets: [
+      { market: '北环批发市场', price: 4.2, updateTime: '2026-05-29 08:00' },
+      { market: '东环批发市场', price: 4.5, updateTime: '2026-05-29 08:00' },
+      { market: '宁鲜市场', price: 4.3, updateTime: '2026-05-29 08:00' },
+    ]
+  },
+  { 
+    id: '7', 
+    name: '鸡蛋', 
+    category: 'egg', 
+    unit: '斤', 
+    markets: [
+      { market: '北环批发市场', price: 5.8, updateTime: '2026-05-29 08:00' },
+      { market: '东环批发市场', price: 6.0, updateTime: '2026-05-29 08:00' },
+      { market: '宁鲜市场', price: 5.9, updateTime: '2026-05-29 08:00' },
+    ]
+  },
+  { 
+    id: '8', 
+    name: '土鸡蛋', 
+    category: 'egg', 
+    unit: '斤', 
+    markets: [
+      { market: '北环批发市场', price: 12.5, updateTime: '2026-05-29 08:00' },
+      { market: '宁鲜市场', price: 12.8, updateTime: '2026-05-29 08:00' },
+    ]
+  },
+  { 
+    id: '9', 
+    name: '猪肉', 
+    category: 'meat', 
+    unit: '斤', 
+    markets: [
+      { market: '北环批发市场', price: 14.5, updateTime: '2026-05-29 08:00' },
+      { market: '东环批发市场', price: 14.8, updateTime: '2026-05-29 08:00' },
+      { market: '宁鲜市场', price: 15.0, updateTime: '2026-05-29 08:00' },
+    ]
+  },
+  { 
+    id: '10', 
+    name: '牛肉', 
+    category: 'meat', 
+    unit: '斤', 
+    markets: [
+      { market: '北环批发市场', price: 38.0, updateTime: '2026-05-29 08:00' },
+      { market: '东环批发市场', price: 38.5, updateTime: '2026-05-29 08:00' },
+    ]
+  },
+  { 
+    id: '11', 
+    name: '羊肉', 
+    category: 'meat', 
+    unit: '斤', 
+    markets: [
+      { market: '北环批发市场', price: 35.0, updateTime: '2026-05-29 08:00' },
+      { market: '东环批发市场', price: 35.5, updateTime: '2026-05-29 08:00' },
+      { market: '宁鲜市场', price: 36.0, updateTime: '2026-05-29 08:00' },
+    ]
+  },
+  { 
+    id: '12', 
+    name: '鸡肉', 
+    category: 'meat', 
+    unit: '斤', 
+    markets: [
+      { market: '北环批发市场', price: 11.8, updateTime: '2026-05-29 08:00' },
+    ]
+  },
+  { 
+    id: '13', 
+    name: '纯牛奶', 
+    category: 'milk', 
+    unit: '袋', 
+    markets: [
+      { market: '北环批发市场', price: 3.5, updateTime: '2026-05-29 08:00' },
+      { market: '东环批发市场', price: 3.6, updateTime: '2026-05-29 08:00' },
+      { market: '宁鲜市场', price: 3.5, updateTime: '2026-05-29 08:00' },
+    ]
+  },
+  { 
+    id: '14', 
+    name: '酸奶', 
+    category: 'milk', 
+    unit: '杯', 
+    markets: [
+      { market: '北环批发市场', price: 4.2, updateTime: '2026-05-29 08:00' },
+      { market: '东环批发市场', price: 4.3, updateTime: '2026-05-29 08:00' },
+    ]
+  },
+  { 
+    id: '15', 
+    name: '鲜牛奶', 
+    category: 'milk', 
+    unit: '斤', 
+    markets: [
+      { market: '北环批发市场', price: 8.8, updateTime: '2026-05-29 08:00' },
+    ]
+  },
 ];
 
 export const restaurantData: Restaurant[] = [
-  { id: '1', name: '老毛手抓', namePinyin: 'laomaoshouzha', address: '银川市兴庆区解放东街126号', rating: 4.8, recommendedDishes: ['手抓羊肉', '凉皮', '烩肉'], avgPrice: 85, distance: 1.2 },
-  { id: '2', name: '德隆楼', namePinyin: 'delonglou', address: '银川市兴庆区鼓楼北街', rating: 4.7, recommendedDishes: ['涮羊肉', '羊肉串', '烤羊排'], avgPrice: 95, distance: 1.8 },
-  { id: '3', name: '迎宾楼', namePinyin: 'yingbinlou', address: '银川市兴庆区解放西街', rating: 4.6, recommendedDishes: ['羊肉泡馍', '凉皮', '肉夹馍'], avgPrice: 45, distance: 2.1 },
-  { id: '4', name: '同心春', namePinyin: 'tongxinchun', address: '银川市金凤区北京中路', rating: 4.5, recommendedDishes: ['爆炒羊羔肉', '烩小吃', '清炖土鸡'], avgPrice: 75, distance: 2.5 },
-  { id: '5', name: '东湖楼', namePinyin: 'donghulou', address: '银川市金凤区上海西路', rating: 4.4, recommendedDishes: ['糖醋鱼', '宫保鸡丁', '红烧肉'], avgPrice: 65, distance: 3.0 },
-  { id: '6', name: '仙鹤楼', namePinyin: 'xianhelou', address: '银川市兴庆区中山南街', rating: 4.3, recommendedDishes: ['水饺', '蒸饺', '凉菜'], avgPrice: 35, distance: 1.5 },
-  { id: '7', name: '国强手抓', namePinyin: 'guoqiangshouzha', address: '银川市兴庆区玉皇阁北街', rating: 4.9, recommendedDishes: ['手抓羊肉', '拌面', '羊肉汤'], avgPrice: 88, distance: 2.2 },
-  { id: '8', name: '马伟手抓', namePinyin: 'maweishouzha', address: '银川市西夏区怀远市场', rating: 4.6, recommendedDishes: ['手抓羊肉', '面食', '凉菜'], avgPrice: 78, distance: 3.5 },
-  { id: '9', name: '红子鸡', namePinyin: 'hongziji', address: '银川市金凤区福州南街', rating: 4.2, recommendedDishes: ['大盘鸡', '辣子鸡', '椒麻鸡'], avgPrice: 68, distance: 2.8 },
-  { id: '10', name: '陶然居', namePinyin: 'taoranju', address: '银川市兴庆区进宁南街', rating: 4.4, recommendedDishes: ['川菜', '水煮鱼', '回锅肉'], avgPrice: 72, distance: 1.9 },
-  { id: '11', name: '味道名家', namePinyin: 'weidaomingjia', address: '银川市金凤区正源南街', rating: 4.5, recommendedDishes: ['创意菜', '私房菜', '融合菜'], avgPrice: 98, distance: 3.2 },
-  { id: '12', name: '塞上饭庄', namePinyin: 'saishangfanzhuang', address: '银川市西夏区文昌南街', rating: 4.3, recommendedDishes: ['宁夏菜', '土菜', '农家菜'], avgPrice: 55, distance: 4.0 },
+  { 
+    id: '1', 
+    name: '张记面馆', 
+    namePinyin: 'zhangjimianguan', 
+    address: '银川市兴庆区利民街', 
+    rating: 4.5, 
+    recommendedDishes: ['牛肉面', '炒面', '凉拌菜'],
+    dishes: [
+      { name: '牛肉面', price: 18 },
+      { name: '炒面', price: 20 },
+      { name: '凉拌菜', price: 12 },
+      { name: '鸡蛋面', price: 15 },
+      { name: '羊肉面', price: 25 },
+      { name: '酸辣面', price: 16 },
+    ],
+    avgPrice: 18, 
+    distance: 0.8 
+  },
+  { 
+    id: '2', 
+    name: '王记饺子馆', 
+    namePinyin: 'wangjijiaoziguan', 
+    address: '银川市兴庆区新华街', 
+    rating: 4.4, 
+    recommendedDishes: ['猪肉白菜饺', '韭菜鸡蛋饺', '小米粥'],
+    dishes: [
+      { name: '猪肉白菜饺', price: 20 },
+      { name: '韭菜鸡蛋饺', price: 18 },
+      { name: '小米粥', price: 5 },
+      { name: '素三鲜饺', price: 19 },
+      { name: '酸菜猪肉饺', price: 20 },
+      { name: '凉拌黄瓜', price: 8 },
+    ],
+    avgPrice: 16, 
+    distance: 1.2 
+  },
+  { 
+    id: '3', 
+    name: '李记麻辣烫', 
+    namePinyin: 'lijimalatang', 
+    address: '银川市金凤区福州街', 
+    rating: 4.3, 
+    recommendedDishes: ['麻辣烫', '酸辣粉', '炸串'],
+    dishes: [
+      { name: '麻辣烫(小)', price: 15 },
+      { name: '麻辣烫(中)', price: 20 },
+      { name: '麻辣烫(大)', price: 28 },
+      { name: '酸辣粉', price: 12 },
+      { name: '炸串套餐', price: 18 },
+      { name: '冰粉', price: 8 },
+    ],
+    avgPrice: 18, 
+    distance: 1.5 
+  },
+  { 
+    id: '4', 
+    name: '马家包子铺', 
+    namePinyin: 'majiabaozipu', 
+    address: '银川市兴庆区解放街', 
+    rating: 4.6, 
+    recommendedDishes: ['牛肉包子', '羊肉包子', '豆浆'],
+    dishes: [
+      { name: '牛肉包子(1个)', price: 2 },
+      { name: '羊肉包子(1个)', price: 2.5 },
+      { name: '素包子(1个)', price: 1.5 },
+      { name: '豆浆', price: 3 },
+      { name: '小米粥', price: 4 },
+      { name: '茶叶蛋', price: 2 },
+    ],
+    avgPrice: 12, 
+    distance: 0.5 
+  },
+  { 
+    id: '5', 
+    name: '陈记凉皮店', 
+    namePinyin: 'chenjiliangpidian', 
+    address: '银川市西夏区怀远路', 
+    rating: 4.5, 
+    recommendedDishes: ['凉皮', '擀面皮', '牛筋面'],
+    dishes: [
+      { name: '凉皮', price: 10 },
+      { name: '擀面皮', price: 11 },
+      { name: '牛筋面', price: 12 },
+      { name: '三合一', price: 14 },
+      { name: '肉夹馍', price: 10 },
+      { name: '酸辣汤', price: 6 },
+    ],
+    avgPrice: 12, 
+    distance: 2.8 
+  },
+  { 
+    id: '6', 
+    name: '刘记砂锅', 
+    namePinyin: 'liujishaguo', 
+    address: '银川市金凤区正源街', 
+    rating: 4.4, 
+    recommendedDishes: ['砂锅烩菜', '砂锅排骨', '米饭'],
+    dishes: [
+      { name: '砂锅烩菜', price: 22 },
+      { name: '砂锅排骨', price: 28 },
+      { name: '砂锅豆腐', price: 18 },
+      { name: '砂锅丸子', price: 20 },
+      { name: '米饭', price: 3 },
+      { name: '小菜', price: 5 },
+    ],
+    avgPrice: 22, 
+    distance: 2.0 
+  },
+  { 
+    id: '7', 
+    name: '赵记烧烤', 
+    namePinyin: 'zhaojishaokao', 
+    address: '银川市兴庆区中山街', 
+    rating: 4.3, 
+    recommendedDishes: ['烤羊肉串', '烤鸡翅', '烤茄子'],
+    dishes: [
+      { name: '烤羊肉串(10串)', price: 30 },
+      { name: '烤鸡翅(1个)', price: 6 },
+      { name: '烤茄子', price: 15 },
+      { name: '烤金针菇', price: 12 },
+      { name: '烤面筋', price: 4 },
+      { name: '毛豆花生', price: 10 },
+    ],
+    avgPrice: 35, 
+    distance: 1.8 
+  },
+  { 
+    id: '8', 
+    name: '孙记羊杂碎', 
+    namePinyin: 'sunjiyangzasui', 
+    address: '银川市兴庆区文化街', 
+    rating: 4.5, 
+    recommendedDishes: ['羊杂碎', '饼子', '糖蒜'],
+    dishes: [
+      { name: '羊杂碎(小碗)', price: 18 },
+      { name: '羊杂碎(大碗)', price: 25 },
+      { name: '饼子', price: 2 },
+      { name: '糖蒜', price: 3 },
+      { name: '茶叶蛋', price: 2 },
+      { name: '小菜', price: 5 },
+    ],
+    avgPrice: 20, 
+    distance: 0.6 
+  },
+  { 
+    id: '9', 
+    name: '周记拌面', 
+    namePinyin: 'zhoujibanmian', 
+    address: '银川市金凤区北京路', 
+    rating: 4.2, 
+    recommendedDishes: ['牛肉拌面', '鸡肉拌面', '汤面'],
+    dishes: [
+      { name: '牛肉拌面', price: 22 },
+      { name: '鸡肉拌面', price: 18 },
+      { name: '汤面', price: 15 },
+      { name: '炒面', price: 20 },
+      { name: '凉菜', price: 10 },
+      { name: '饮料', price: 5 },
+    ],
+    avgPrice: 18, 
+    distance: 2.5 
+  },
+  { 
+    id: '10', 
+    name: '吴记家常菜', 
+    namePinyin: 'wuji家常cai', 
+    address: '银川市西夏区文昌街', 
+    rating: 4.3, 
+    recommendedDishes: ['酸辣土豆丝', '番茄炒蛋', '麻婆豆腐'],
+    dishes: [
+      { name: '酸辣土豆丝', price: 12 },
+      { name: '番茄炒蛋', price: 15 },
+      { name: '麻婆豆腐', price: 14 },
+      { name: '宫保鸡丁', price: 22 },
+      { name: '鱼香肉丝', price: 20 },
+      { name: '米饭', price: 3 },
+    ],
+    avgPrice: 25, 
+    distance: 3.0 
+  },
 ];
 
 export const entertainmentData: Entertainment[] = [
@@ -106,29 +414,53 @@ export const entertainmentData: Entertainment[] = [
     { id: 'r59', userName: '阮叔叔', content: '有餐饮区', rating: 4, createTime: '2026-04-27' },
     { id: 'r60', userName: '陈奶奶', content: '很值得去', rating: 5, createTime: '2026-04-24' },
   ]},
-  { id: '7', name: '滚钟口风景区', namePinyin: 'gunzhongkoufengjingqu', address: '银川市西夏区镇北堡镇', type: 'entertainment', price: 30, distance: 8.5, reviews: [
-    { id: 'r61', userName: '卫爷爷', content: '风景独特', rating: 5, createTime: '2026-05-20' },
-    { id: 'r62', userName: '蒋大妈', content: '爬山锻炼', rating: 4, createTime: '2026-05-18' },
-    { id: 'r63', userName: '程大爷', content: '空气清新', rating: 5, createTime: '2026-05-15' },
-    { id: 'r64', userName: '韩阿姨', content: '老人要注意安全', rating: 4, createTime: '2026-05-12' },
-    { id: 'r65', userName: '沈叔叔', content: '有寺庙可以拜佛', rating: 5, createTime: '2026-05-10' },
-    { id: 'r66', userName: '顾奶奶', content: '路有点陡', rating: 4, createTime: '2026-05-08' },
-    { id: 'r67', userName: '万大爷', content: '自然风光好', rating: 5, createTime: '2026-05-05' },
-    { id: 'r68', userName: '毕阿姨', content: '建议早上去', rating: 5, createTime: '2026-05-03' },
-    { id: 'r69', userName: '傅叔叔', content: '有缆车可以坐', rating: 4, createTime: '2026-04-28' },
-    { id: 'r70', userName: '邬奶奶', content: '银川必去景点', rating: 5, createTime: '2026-04-25' },
+  { id: '7', name: '鸿运棋牌室', namePinyin: 'hongyunqipai', address: '银川市兴庆区新华街', type: 'entertainment', price: 25, distance: 1.0, reviews: [
+    { id: 'r61', userName: '张叔叔', content: '环境安静，设施齐全', rating: 5, createTime: '2026-05-20' },
+    { id: 'r62', userName: '李阿姨', content: '麻将机很新', rating: 5, createTime: '2026-05-18' },
+    { id: 'r63', userName: '王大爷', content: '价格实惠', rating: 4, createTime: '2026-05-15' },
+    { id: 'r64', userName: '赵奶奶', content: '服务态度好', rating: 5, createTime: '2026-05-12' },
+    { id: 'r65', userName: '钱叔叔', content: '有茶水供应', rating: 4, createTime: '2026-05-10' },
+    { id: 'r66', userName: '孙阿姨', content: '包间干净', rating: 5, createTime: '2026-05-08' },
+    { id: 'r67', userName: '周大爷', content: '停车方便', rating: 4, createTime: '2026-05-05' },
+    { id: 'r68', userName: '吴阿姨', content: '适合老友聚会', rating: 5, createTime: '2026-05-03' },
+    { id: 'r69', userName: '郑叔叔', content: '空调很凉快', rating: 5, createTime: '2026-04-28' },
+    { id: 'r70', userName: '冯奶奶', content: '经常来玩', rating: 5, createTime: '2026-04-25' },
   ]},
-  { id: '8', name: '黄河军事博览园', namePinyin: 'huanghejunshibolanyuan', address: '银川市兴庆区黄河东岸', type: 'entertainment', price: 60, distance: 6.2, reviews: [
-    { id: 'r71', userName: '臧爷爷', content: '可以参观军舰', rating: 5, createTime: '2026-05-19' },
-    { id: 'r72', userName: '管大妈', content: '孩子很喜欢', rating: 5, createTime: '2026-05-17' },
-    { id: 'r73', userName: '杜大爷', content: '有教育意义', rating: 5, createTime: '2026-05-14' },
-    { id: 'r74', userName: '蒋阿姨', content: '适合带孙子去', rating: 5, createTime: '2026-05-11' },
-    { id: 'r75', userName: '戚叔叔', content: '了解军事知识', rating: 5, createTime: '2026-05-09' },
-    { id: 'r76', userName: '陆奶奶', content: '票价合理', rating: 4, createTime: '2026-05-07' },
-    { id: 'r77', userName: '甄大爷', content: '表演很精彩', rating: 5, createTime: '2026-05-04' },
-    { id: 'r78', userName: '桂阿姨', content: '有吃饭的地方', rating: 4, createTime: '2026-05-02' },
-    { id: 'r79', userName: '席叔叔', content: '需要预约', rating: 4, createTime: '2026-04-27' },
-    { id: 'r80', userName: '孟奶奶', content: '值得一去', rating: 5, createTime: '2026-04-24' },
+  { id: '8', name: '福星棋牌室', namePinyin: 'fuxingqipai', address: '银川市金凤区福州街', type: 'entertainment', price: 30, distance: 2.2, reviews: [
+    { id: 'r71', userName: '陈叔叔', content: '环境优雅', rating: 5, createTime: '2026-05-19' },
+    { id: 'r72', userName: '林阿姨', content: '麻将品种多', rating: 5, createTime: '2026-05-17' },
+    { id: 'r73', userName: '黄大爷', content: '服务周到', rating: 4, createTime: '2026-05-14' },
+    { id: 'r74', userName: '许奶奶', content: '有小吃供应', rating: 5, createTime: '2026-05-11' },
+    { id: 'r75', userName: '何叔叔', content: '包间宽敞', rating: 5, createTime: '2026-05-09' },
+    { id: 'r76', userName: '吕阿姨', content: '价格合理', rating: 4, createTime: '2026-05-07' },
+    { id: 'r77', userName: '施大爷', content: '音响效果好', rating: 5, createTime: '2026-05-04' },
+    { id: 'r78', userName: '张阿姨', content: '适合家庭聚会', rating: 5, createTime: '2026-05-02' },
+    { id: 'r79', userName: '孔叔叔', content: '营业时间长', rating: 4, createTime: '2026-04-27' },
+    { id: 'r80', userName: '曹奶奶', content: '推荐', rating: 5, createTime: '2026-04-24' },
+  ]},
+  { id: '9', name: '聚友棋牌室', namePinyin: 'juyouqipai', address: '银川市兴庆区解放街', type: 'entertainment', price: 28, distance: 1.5, reviews: [
+    { id: 'r81', userName: '严叔叔', content: '朋友聚会好地方', rating: 5, createTime: '2026-05-20' },
+    { id: 'r82', userName: '沈阿姨', content: '环境舒适', rating: 5, createTime: '2026-05-18' },
+    { id: 'r83', userName: '鲁大爷', content: '设备先进', rating: 4, createTime: '2026-05-15' },
+    { id: 'r84', userName: '卫奶奶', content: '服务热情', rating: 5, createTime: '2026-05-12' },
+    { id: 'r85', userName: '康叔叔', content: '茶水免费', rating: 5, createTime: '2026-05-10' },
+    { id: 'r86', userName: '祝阿姨', content: '空气流通', rating: 4, createTime: '2026-05-08' },
+    { id: 'r87', userName: '左大爷', content: '停车方便', rating: 5, createTime: '2026-05-05' },
+    { id: 'r88', userName: '石阿姨', content: '性价比高', rating: 5, createTime: '2026-05-03' },
+    { id: 'r89', userName: '顾叔叔', content: '隔音效果好', rating: 4, createTime: '2026-04-28' },
+    { id: 'r90', userName: '水奶奶', content: '常来光顾', rating: 5, createTime: '2026-04-25' },
+  ]},
+  { id: '10', name: '康乐棋牌室', namePinyin: 'kangleqipai', address: '银川市西夏区怀远路', type: 'entertainment', price: 22, distance: 3.5, reviews: [
+    { id: 'r91', userName: '柴叔叔', content: '价格便宜', rating: 5, createTime: '2026-05-19' },
+    { id: 'r92', userName: '松阿姨', content: '环境干净', rating: 5, createTime: '2026-05-17' },
+    { id: 'r93', userName: '纪大爷', content: '老板热情', rating: 4, createTime: '2026-05-14' },
+    { id: 'r94', userName: '席奶奶', content: '麻将牌很新', rating: 5, createTime: '2026-05-11' },
+    { id: 'r95', userName: '范叔叔', content: '交通便利', rating: 5, createTime: '2026-05-09' },
+    { id: 'r96', userName: '苗阿姨', content: '有空调', rating: 4, createTime: '2026-05-07' },
+    { id: 'r97', userName: '葛大爷', content: '适合老年人', rating: 5, createTime: '2026-05-04' },
+    { id: 'r98', userName: '史阿姨', content: '服务态度好', rating: 5, createTime: '2026-05-02' },
+    { id: 'r99', userName: '唐叔叔', content: '设施齐全', rating: 4, createTime: '2026-04-27' },
+    { id: 'r100', userName: '陶奶奶', content: '值得推荐', rating: 5, createTime: '2026-04-24' },
   ]},
 ];
 

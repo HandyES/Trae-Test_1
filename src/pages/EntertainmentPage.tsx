@@ -26,6 +26,10 @@ export const EntertainmentPage: React.FC = () => {
     setPage((prev) => prev + 1);
   };
 
+  const isChessRoom = (name: string) => {
+    return name.includes('棋牌室');
+  };
+
   return (
     <div className="min-h-screen bg-[#F8FAFB]">
       <Header title="周边玩乐" />
@@ -33,52 +37,60 @@ export const EntertainmentPage: React.FC = () => {
       <div className="p-4">
         <div className="bg-[#2E8B9A]/10 rounded-xl p-3 mb-4">
           <p className="text-[#2E8B9A] text-lg font-medium text-center">
-            周边5公里内的玩乐地点
+            周边5公里内的玩乐地点（含棋牌室）
           </p>
         </div>
 
         <div className="space-y-4">
-          {displayedData.map((place: Entertainment) => (
-            <div key={place.id} className="bg-white rounded-2xl p-4 shadow-sm">
-              <div className="flex items-start gap-4">
-                <div className="bg-blue-100 w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <span className="text-3xl">🎲</span>
-                </div>
-                <div className="flex-1 min-w-0">
-                  <h3 className="text-xl font-bold text-gray-800 mb-2">{place.name}</h3>
-                  
-                  <div className="flex items-center gap-2 text-gray-500 text-base mb-2">
-                    <MapPin className="w-4 h-4 flex-shrink-0" />
-                    <span className="truncate">{place.address}</span>
+          {displayedData.map((place: Entertainment) => {
+            const isChess = isChessRoom(place.name);
+            return (
+              <div key={place.id} className="bg-white rounded-2xl p-4 shadow-sm">
+                <div className="flex items-start gap-4">
+                  <div className={`${isChess ? 'bg-green-100' : 'bg-blue-100'} w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0`}>
+                    <span className="text-3xl">{isChess ? '🀄' : '🎲'}</span>
                   </div>
-
-                  {place.distance && (
-                    <div className="text-gray-500 text-base mb-2">
-                      距离 {place.distance}km
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 mb-2">
+                      <h3 className="text-xl font-bold text-gray-800">{place.name}</h3>
+                      {isChess && (
+                        <span className="bg-green-100 text-green-600 px-2 py-1 rounded-full text-sm font-medium">棋牌室</span>
+                      )}
                     </div>
-                  )}
-
-                  {place.price === 0 ? (
-                    <div className="flex items-center gap-2 text-[#3CB371] font-bold text-lg mb-3">
-                      <Ticket className="w-5 h-5" />
-                      <span>免费</span>
+                    
+                    <div className="flex items-center gap-2 text-gray-500 text-base mb-2">
+                      <MapPin className="w-4 h-4 flex-shrink-0" />
+                      <span className="truncate">{place.address}</span>
                     </div>
-                  ) : (
-                    <div className="flex items-center gap-2 text-[#E8985A] font-bold text-lg mb-3">
-                      <Ticket className="w-5 h-5" />
-                      <span>门票 ¥{place.price}</span>
+
+                    {place.distance && (
+                      <div className="text-gray-500 text-base mb-2">
+                        距离 {place.distance}km
+                      </div>
+                    )}
+
+                    {place.price === 0 ? (
+                      <div className="flex items-center gap-2 text-[#3CB371] font-bold text-lg mb-3">
+                        <Ticket className="w-5 h-5" />
+                        <span>免费</span>
+                      </div>
+                    ) : (
+                      <div className="flex items-center gap-2 text-[#E8985A] font-bold text-lg mb-3">
+                        <Ticket className="w-5 h-5" />
+                        <span>{isChess ? '每小时 ¥' : '门票 ¥'}{place.price}</span>
+                      </div>
+                    )}
+
+                    <ReviewList reviews={place.reviews} />
+
+                    <div className="mt-4">
+                      <CopyButton address={place.address} />
                     </div>
-                  )}
-
-                  <ReviewList reviews={place.reviews} />
-
-                  <div className="mt-4">
-                    <CopyButton address={place.address} />
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         {hasMore && (

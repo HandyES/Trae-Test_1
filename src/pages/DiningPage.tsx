@@ -1,7 +1,8 @@
 import React, { useState, useMemo } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Header } from '../components/layout/Header';
 import { CopyButton } from '../components/common/CopyButton';
-import { Star, MapPin, Clock } from 'lucide-react';
+import { Star, MapPin, Clock, UtensilsCrossed } from 'lucide-react';
 import { Restaurant } from '../types';
 import { restaurantData } from '../data/mockData';
 import { sortByPinyin } from '../utils/pinyinSort';
@@ -10,6 +11,7 @@ const PAGE_SIZE = 5;
 
 export const DiningPage: React.FC = () => {
   const [page, setPage] = useState(1);
+  const navigate = useNavigate();
 
   const sortedData = useMemo(() => {
     return sortByPinyin(restaurantData);
@@ -25,6 +27,10 @@ export const DiningPage: React.FC = () => {
     setPage((prev) => prev + 1);
   };
 
+  const handleDishClick = (restaurant: Restaurant) => {
+    navigate(`/dining/${restaurant.id}`, { state: { restaurant } });
+  };
+
   return (
     <div className="min-h-screen bg-[#F8FAFB]">
       <Header title="本地餐厅推荐" />
@@ -32,7 +38,7 @@ export const DiningPage: React.FC = () => {
       <div className="p-4">
         <div className="bg-[#2E8B9A]/10 rounded-xl p-3 mb-4">
           <p className="text-[#2E8B9A] text-lg font-medium text-center">
-            基于美团、大众点评等平台的高评分餐厅
+            人均50元以内的本地特色小饭店
           </p>
         </div>
 
@@ -56,7 +62,7 @@ export const DiningPage: React.FC = () => {
                     <MapPin className="w-4 h-4 flex-shrink-0" />
                     <span className="truncate">{restaurant.address}</span>
                   </div>
-                  
+
                   {restaurant.distance && (
                     <div className="flex items-center gap-2 text-gray-500 text-base mb-2">
                       <Clock className="w-4 h-4 flex-shrink-0" />
@@ -64,15 +70,23 @@ export const DiningPage: React.FC = () => {
                     </div>
                   )}
 
-                  <div className="flex flex-wrap gap-2 mb-3">
-                    {restaurant.recommendedDishes.map((dish, index) => (
-                      <span
-                        key={index}
-                        className="bg-[#E8985A]/10 text-[#E8985A] px-3 py-1 rounded-full text-base"
-                      >
-                        {dish}
-                      </span>
-                    ))}
+                  <div className="mb-3">
+                    <div className="flex items-center gap-2 mb-2">
+                      <UtensilsCrossed className="w-4 h-4 text-orange-500" />
+                      <span className="font-medium text-gray-700">推荐菜品：</span>
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      {restaurant.recommendedDishes.map((dish, index) => (
+                        <button
+                          key={index}
+                          onClick={() => handleDishClick(restaurant)}
+                          className="bg-[#E8985A]/10 text-[#E8985A] px-3 py-1.5 rounded-full text-base hover:bg-[#E8985A]/20 transition-colors min-h-[40px]"
+                        >
+                          {dish}
+                        </button>
+                      ))}
+                    </div>
+                    <p className="text-sm text-gray-400 mt-2">点击查看完整菜单</p>
                   </div>
 
                   <div className="flex items-center justify-between">
