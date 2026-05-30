@@ -1,7 +1,7 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState } from 'react';
 import { Header } from '../components/layout/Header';
-import { ShoppingItem, ShoppingCategory } from '../types';
-import { shoppingData } from '../data/mockData';
+import { ShoppingItem as ShoppingItemType, ShoppingCategory } from '../types';
+import { useShoppingData } from '../hooks/useApiData';
 
 const categoryConfig = {
   vegetable: { label: '蔬菜', color: 'bg-green-500', bgColor: 'bg-green-50' },
@@ -13,29 +13,11 @@ const categoryConfig = {
 const PAGE_SIZE = 5;
 
 export const ShoppingPage: React.FC = () => {
-  const [page, setPage] = useState(1);
   const [selectedCategory, setSelectedCategory] = useState<ShoppingCategory | 'all'>('all');
-
-  const filteredData = useMemo(() => {
-    if (selectedCategory === 'all') {
-      return shoppingData;
-    }
-    return shoppingData.filter((item) => item.category === selectedCategory);
-  }, [selectedCategory]);
-
-  const displayedData = useMemo(() => {
-    return filteredData.slice(0, page * PAGE_SIZE);
-  }, [filteredData, page]);
-
-  const hasMore = displayedData.length < filteredData.length;
-
-  const handleLoadMore = () => {
-    setPage((prev) => prev + 1);
-  };
+  const { data, loading, error, hasMore, loadMore } = useShoppingData(selectedCategory, PAGE_SIZE);
 
   const handleCategoryChange = (category: ShoppingCategory | 'all') => {
     setSelectedCategory(category);
-    setPage(1);
   };
 
   const renderIcon = (category: ShoppingCategory) => {
@@ -53,11 +35,26 @@ export const ShoppingPage: React.FC = () => {
     );
   };
 
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-[#F8FAFB] flex items-center justify-center">
+        <div className="text-xl">加载中...</div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-[#F8FAFB]">
       <Header title="今日菜价" />
       
       <div className="p-4">
+        {error && (
+          <div className="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 mb-4 rounded">
+            <p className="font-bold">提示</p>
+            <p className="text-sm">{error}</p>
+          </div>
+        )}
+        
         <div className="flex gap-2 mb-4 overflow-x-auto pb-2">
           <button
             onClick={() => handleCategoryChange('all')}
@@ -85,7 +82,7 @@ export const ShoppingPage: React.FC = () => {
         </div>
 
         <div className="space-y-3">
-          {displayedData.map((item: ShoppingItem) => (
+          {data.map((item: ShoppingItemType) => (
             <div key={item.id} className="bg-white rounded-2xl p-4 shadow-sm">
               <div className="flex items-center gap-4">
                 {renderIcon(item.category)}
@@ -119,7 +116,7 @@ export const ShoppingPage: React.FC = () => {
         {hasMore && (
           <div className="mt-6 text-center">
             <button
-              onClick={handleLoadMore}
+              onClick={loadMore}
               className="px-8 py-3 bg-[#2E8B9A] text-white rounded-xl text-lg font-medium min-h-[48px] hover:bg-[#247080] active:bg-[#1d6069] transition-colors"
             >
               加载更多
@@ -127,9 +124,15 @@ export const ShoppingPage: React.FC = () => {
           </div>
         )}
 
-        {!hasMore && displayedData.length > 0 && (
+        {!hasMore && data.length > 0 && (
           <div className="py-8 text-center text-gray-400 text-lg">
             没有更多了
+          </div>
+        )}
+        
+        {!loading && data.length === 0 && (
+          <div className="py-16 text-center text-gray-400 text-lg">
+            暂无数据
           </div>
         )}
       </div>
